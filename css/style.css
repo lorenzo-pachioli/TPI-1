@@ -20,8 +20,10 @@
 
     --gap1: 1em;
 
+    --radius0: 2px;
     --radius1: 5px;
 
+    --shadow0: 0px 1px 2.5px var(--color3);
     --shadow1: 0px 2px 5px var(--color3);
 
     --border1: 1px solid var(--color3);
@@ -50,6 +52,19 @@ h2 {
     color: var(--color3);
 }
 
+button {
+    border-style: none; 
+    border: var(--border1);
+    border-radius: var(--radius0);
+    box-shadow: var(--shadow0);
+    cursor: pointer;
+    padding: var(--padding0);
+}
+button:hover {
+    transform: scale(1.01); 
+}
+
+
 /* ------------------------------------------------------------ */
 
 header {
@@ -73,23 +88,46 @@ main {
 }
 
 main> :first-child {
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: var(--gap1);
     background-color: var(--color4);
+
+    div {
+        width: 100%;
+        height: 5em;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+        justify-content: center;
+    }
+
+    .botones {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        gap: var(--gap1);
+    }
 }
 
 main> :last-child {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
+    align-items: start;
     gap: var(--gap1);
     background-color: var(--color4);
-    
+
 
     #buscador {
         width: 100%;
+        height: fit-content;
     }
-    div {
 
-    }
     #grid-libros {
         border: var(--border1);
     }

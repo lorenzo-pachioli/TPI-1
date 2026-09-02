@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header>
         <h1>Biblioteca de TPI 1</h1>
     </header>
     <main>
+
+        <!-- FORMULARIO DE CARGA DE LIBROS -->
         <section>
-            <form></form>
+            <form id="cargar-libro">
+                <!-- titulo, autor, genero, ano -->
+                <div>
+                    <label for="titulo">Titulo</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Ingresar titulo" required>
+                </div>
+
+                <div>
+                    <label for="autor">Autor</label>
+                    <input type="text" id="autor" name="autor" placeholder="Ingresar autor" required>
+                </div>
+
+                <div>
+                    <label for="generos">Generos</label>
+                    <select id="generos" name="generos" required></select>
+                </div>
+
+                <div>
+                    <label for="ano">Seleccione el año</label>
+                    <input type="number" name="ano" id="ano" placeholder="1980">
+                </div>
+
+                <div class="botones">
+                    <button type="reset">Limpiar</button>
+                    <button type="submit">Cargar</button>
+                </div>
+            </form>
         </section>
+
+        <!-- GRID DE LIBROS CON EL BUSCADOR -->
         <section>
             <input type="text" name="buscador" id="buscador" placeholder="Buscar libro">
             <div>
@@ -31,4 +63,5 @@
     <script src="js/render.js"></script>
     <script src="js/data.js"></script>
 </body>
+
 </html>
