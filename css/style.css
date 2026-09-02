@@ -5,16 +5,99 @@
 }
 
 :root {
-    --color1: rgb(225, 225, 215);
+    --color1: rgb(254, 237, 210);
     --color2: rgb(74, 98, 254);
     --color3: rgb(80, 90, 120);
-    --color4: rgb(210, 202, 191);
+    --color4: rgb(255, 251, 245);
 
     --font1: 3rem;
     --font2: 1.2rem;
 
-    --padding1: 1rem;
-    --padding2: 2rem;
+    --padding0: 0.5em;
+    --padding1: 1em;
+    --padding2: 2em;
+    --padding3: 4em;
+
+    --gap1: 1em;
+
+    --radius1: 5px;
+
+    --shadow1: 0px 2px 5px var(--color3);
+
+    --border1: 1px solid var(--color3);
 
     scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* -------- Estilos generales --------------------------------- */
+input {
+    border-style: none;
+    height: 3em;
+    background-color: var(--color4);
+    border-radius: var(--radius1);
+    border: var(--border1);
+    padding: var(--padding0);
+}
+
+section {
+    box-shadow: var(--shadow1);
+    border-radius: var(--radius1);
+    padding: var(--padding0);
+}
+
+h2 {
+    color: var(--color3);
+}
+
+/* ------------------------------------------------------------ */
+
+header {
+    background-color: var(--color2);
+    text-align: center;
+    padding: var(--padding1);
+
+    h1 {
+        color: var(--color1);
+    }
+}
+
+main {
+    width: 100%;
+    padding: var(--padding1) var(--padding3);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--gap1);
+    background-color: var(--color1);
+
+}
+
+main> :first-child {
+    background-color: var(--color4);
+}
+
+main> :last-child {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap1);
+    background-color: var(--color4);
+    
+
+    #buscador {
+        width: 100%;
+    }
+    div {
+
+    }
+    #grid-libros {
+        border: var(--border1);
+    }
+}
+
+footer {
+    background-color: var(--color2);
+    color: var(--color1);
+    padding: var(--padding0);
+    text-align: center;
 }
