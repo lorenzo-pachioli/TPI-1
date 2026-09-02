@@ -53,21 +53,24 @@ h2 {
 }
 
 button {
-    border-style: none; 
+    border-style: none;
     border: var(--border1);
     border-radius: var(--radius0);
     box-shadow: var(--shadow0);
     cursor: pointer;
     padding: var(--padding0);
 }
+
 button:hover {
-    transform: scale(1.01); 
+    transform: scale(1.01);
 }
 
 
 /* ------------------------------------------------------------ */
 
 header {
+    position: sticky;
+    top:0;
     background-color: var(--color2);
     text-align: center;
     padding: var(--padding1);
@@ -79,6 +82,7 @@ header {
 
 main {
     width: 100%;
+    min-height: calc(100vh - 2em);
     padding: var(--padding1) var(--padding3);
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -117,7 +121,8 @@ main> :first-child {
 main> :last-child {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-rows: auto max-content;
+    align-content: start;
     align-items: start;
     gap: var(--gap1);
     background-color: var(--color4);
@@ -129,11 +134,13 @@ main> :last-child {
     }
 
     #grid-libros {
+        height: 100%;
         border: var(--border1);
     }
 }
 
 footer {
+    height: 2em;
     background-color: var(--color2);
     color: var(--color1);
     padding: var(--padding0);
