@@ -1,0 +1,20 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --color1: rgb(225, 225, 215);
+    --color2: rgb(74, 98, 254);
+    --color3: rgb(80, 90, 120);
+    --color4: rgb(210, 202, 191);
+
+    --font1: 3rem;
+    --font2: 1.2rem;
+
+    --padding1: 1rem;
+    --padding2: 2rem;
+
+    scroll-behavior: smooth;
+}
