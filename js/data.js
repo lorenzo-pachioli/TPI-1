@@ -90,3 +90,5 @@ let libros = [
     favorito: false
   }
 ];
+
+let ultimo_id = libros[libros.length - 1].id;
