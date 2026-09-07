@@ -39,7 +39,7 @@ function cargarTarjeta(libro) {
     modificarLibro(libro);
     renderizarListLibros(libros);
   });
-  
+
   return tarjetaLibro;
 }
 
@@ -53,11 +53,7 @@ function renderizarListLibros(listaLibros) {
   }
 }
 
-function agregarListeners(id) {
-  agregarSubmit(id);
-}
-
-function agregarSubmit(id) {
+function agregarSubmit(id, callback) {
   const formulario = document.getElementById(id);
 
   formulario.addEventListener("submit", (e) => {
@@ -65,35 +61,24 @@ function agregarSubmit(id) {
 
     const data = new FormData(formulario);
 
-    const nuevo_libro = {
-      id: ultimo_id,
-      titulo: data.get("titulo"),
-      autor: data.get("autor"),
-      genero: data.get("generos"),
-      año: data.get("ano"),
-      disponible: true,
-      favorito: false,
-    };
-
-    libros.push(nuevo_libro);
-    renderizarListLibros(libros);
+    callback(data);
 
     formulario.reset();
   });
 }
 
-function agregarGeneros(idSelect, listaGeneros) {
+function agregarASelector(idSelect, listaGeneros, placeholder) {
   const selectGeneros = document.getElementById(idSelect);
   selectGeneros.appendChild(
-    optionGenero("", "Seleccione un género", true, true),
+    optionGenero("", placeholder, true, true),
   );
 
   listaGeneros.forEach((e) => {
-    selectGeneros.appendChild(optionGenero(e, e, false, false));
+    selectGeneros.appendChild(optionsSelector(e, e, false, false));
   });
 }
 
-function optionGenero(value, text, disable, selected) {
+function optionsSelector(value, text, disable, selected) {
   const opcionPorDefecto = document.createElement("option");
   opcionPorDefecto.value = value;
   opcionPorDefecto.textContent = text;
