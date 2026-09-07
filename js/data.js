@@ -1,4 +1,4 @@
-let libros = [
+var libros = [
   {
     id: 1,
     titulo: "Cien años de soledad",
@@ -92,3 +92,5 @@ let libros = [
 ];
 
 let ultimo_id = libros[libros.length - 1].id;
+
+const lista_generos = [...new Set(libros.map(libro => libro.genero))];
