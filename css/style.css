@@ -19,6 +19,7 @@
     --padding3: 4em;
 
     --gap1: 1em;
+    --gap2: 2em;
 
     --radius0: 2px;
     --radius1: 5px;
@@ -124,7 +125,7 @@ main> :last-child {
     grid-template-rows: auto max-content;
     align-content: start;
     align-items: start;
-    gap: var(--gap1);
+    gap: var(--gap2);
     background-color: var(--color4);
 
 
@@ -132,12 +133,44 @@ main> :last-child {
         width: 100%;
         height: fit-content;
     }
+}
 
-    #grid-libros {
-        height: 100%;
-        border: var(--border1);
+.catalogo {
+    display: grid;
+    gap: var(--gap1);
+}
+
+/* -------------------- TARJETA DEL LIBRO ------------------------ */
+#grid-libros {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--gap1);
+}
+
+.tarjeta-libro {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius1);
+    background-color: var(--color1);
+    padding: var(--padding1);
+    box-shadow: var(--shadow1);
+
+    h3 {
+        width: 100%;
+        background-color: var(--color2);
+        color: var(--color4);
+        padding: var(--padding0);
+        border-radius: 5px 5px 0 0;
+        margin-bottom: 0.5em;
     }
 }
+
+.tarjeta-footer {
+    text-align: end;
+}
+
+/* --------------------------------------------------------------- */
 
 footer {
     height: 2em;
