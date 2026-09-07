@@ -9,6 +9,7 @@
     --color2: rgb(74, 98, 254);
     --color3: rgb(80, 90, 120);
     --color4: rgb(255, 251, 245);
+    --color5: #ffca28;
 
     --font1: 3rem;
     --font2: 1.2rem;
@@ -56,7 +57,7 @@ h2 {
 button {
     border-style: none;
     border: var(--border1);
-    border-radius: var(--radius0);
+    border-radius: var(--radius1);
     box-shadow: var(--shadow0);
     cursor: pointer;
     padding: var(--padding0);
@@ -71,7 +72,7 @@ button:hover {
 
 header {
     position: sticky;
-    top:0;
+    top: 0;
     background-color: var(--color2);
     text-align: center;
     padding: var(--padding1);
@@ -164,6 +165,36 @@ main> :last-child {
         border-radius: 5px 5px 0 0;
         margin-bottom: 0.5em;
     }
+}
+
+.tarjeta-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--gap1);
+
+    span {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+}
+
+.favorito-icono {
+    color: var(--color5);
+    transition: transform 0.1s ease, color 0.2s ease;
+}
+
+.favorito-icono:hover {
+    transform: scale(1.2);
+}
+
+.favorito-icono:contains("star"),
+.favorito-icono {
+    color: var(--color5);
 }
 
 .tarjeta-footer {

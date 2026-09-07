@@ -94,3 +94,14 @@ var libros = [
 let ultimo_id = libros[libros.length - 1].id;
 
 const lista_generos = [...new Set(libros.map(libro => libro.genero))];
+
+function modificarLibro(libro){
+  libros = libros.map(l => {
+    if (l.id === libro.id) {
+      return libro;
+    }
+    return l;
+  })
+  console.log(libros);
+  
+}

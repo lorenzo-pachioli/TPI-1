@@ -6,7 +6,7 @@ function cargarTarjeta(libro) {
   let tarjetaLibro = document.createElement("div");
   tarjetaLibro.classList.add("tarjeta-libro");
 
-  let favorito = libro.favorito ? "⭐" : "☆";
+  let favorito = libro.favorito ? "favorite" : "favorite_border";
   let disponible = libro.disponible ? "Disponible" : "Prestado";
 
   tarjetaLibro.innerHTML = `
@@ -15,21 +15,38 @@ function cargarTarjeta(libro) {
       <p><strong>Autor:</strong> ${libro.autor}</p>
       <p><strong>Género:</strong> ${libro.genero}</p>
     </div>
-    <div class="tarjeta-header">
-      <span class="favorito-icono">${favorito}</span>
-      <span class="estado-etiqueta">${disponible}</span>
+    <div class="tarjeta-header">      
+      <span class="material-icons favorito-icono" data-id="${libro.id}">
+        ${favorito}
+      </span>
+      <button class=" disponible-icono">${disponible}</button>
     </div>
     <div class="tarjeta-footer">
       <small>Año: ${libro.año}</small>
     </div>
   `;
+
+  const botonFav = tarjetaLibro.querySelector(".favorito-icono");
+  botonFav.addEventListener("click", () => {
+    libro.favorito = !libro.favorito;
+    modificarLibro(libro);
+    renderizarListLibros(libros);
+  });
+
+  const botonDis = tarjetaLibro.querySelector(".disponible-icono");
+  botonDis.addEventListener("click", () => {
+    libro.disponible = !libro.disponible;
+    modificarLibro(libro);
+    renderizarListLibros(libros);
+  });
+  
   return tarjetaLibro;
 }
 
 function renderizarListLibros(listaLibros) {
   let contenedorLibros = document.getElementById("grid-libros");
 
-  contenedorLibros.innerHTML = ""; 
+  contenedorLibros.innerHTML = "";
 
   for (let index = 0; index < listaLibros.length; index++) {
     contenedorLibros.appendChild(cargarTarjeta(listaLibros[index]));
@@ -39,7 +56,6 @@ function renderizarListLibros(listaLibros) {
 function agregarListeners(id) {
   agregarSubmit(id);
 }
-
 
 function agregarSubmit(id) {
   const formulario = document.getElementById(id);
@@ -68,9 +84,11 @@ function agregarSubmit(id) {
 
 function agregarGeneros(idSelect, listaGeneros) {
   const selectGeneros = document.getElementById(idSelect);
-  selectGeneros.appendChild(optionGenero("", "Seleccione un género", true, true));
+  selectGeneros.appendChild(
+    optionGenero("", "Seleccione un género", true, true),
+  );
 
-  listaGeneros.forEach(e => {
+  listaGeneros.forEach((e) => {
     selectGeneros.appendChild(optionGenero(e, e, false, false));
   });
 }
