@@ -184,7 +184,7 @@ main> :last-child {
 }
 
 .favorito-icono {
-    color: var(--color5);
+    color: var(--color2);
     transition: transform 0.1s ease, color 0.2s ease;
 }
 
@@ -194,7 +194,7 @@ main> :last-child {
 
 .favorito-icono:contains("star"),
 .favorito-icono {
-    color: var(--color5);
+    color: var(--color2);
 }
 
 .tarjeta-footer {

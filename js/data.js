@@ -102,6 +102,4 @@ function modificarLibro(libro){
     }
     return l;
   })
-  console.log(libros);
-  
 }
