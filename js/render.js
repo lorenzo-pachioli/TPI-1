@@ -70,7 +70,7 @@ function agregarSubmit(id, callback) {
 function agregarASelector(idSelect, listaGeneros, placeholder) {
   const selectGeneros = document.getElementById(idSelect);
   selectGeneros.appendChild(
-    optionGenero("", placeholder, true, true),
+    optionsSelector("", placeholder, true, true),
   );
 
   listaGeneros.forEach((e) => {
