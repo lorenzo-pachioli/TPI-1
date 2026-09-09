@@ -1,4 +1,4 @@
-var libros = [
+export let libros = [
   {
     id: 1,
     titulo: "Cien años de soledad",
@@ -91,11 +91,11 @@ var libros = [
   }
 ];
 
-let ultimo_id = libros[libros.length - 1].id;
+export const ultimo_id = libros[libros.length - 1].id;
 
-const lista_generos = [...new Set(libros.map(libro => libro.genero))];
+export const lista_generos = [...new Set(libros.map(libro => libro.genero))];
 
-function modificarLibro(libro){
+export function modificarLibro(libro){
   libros = libros.map(l => {
     if (l.id === libro.id) {
       return libro;
@@ -103,3 +103,5 @@ function modificarLibro(libro){
     return l;
   })
 }
+
+  

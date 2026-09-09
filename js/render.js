@@ -1,8 +1,7 @@
 "use strict";
+import { libros, modificarLibro } from "./data.js";
 
-let gridLibros = document.getElementById("grid-libros");
-
-function cargarTarjeta(libro) {
+export function cargarTarjeta(libro) {
   let tarjetaLibro = document.createElement("div");
   tarjetaLibro.classList.add("tarjeta-libro");
 
@@ -38,12 +37,12 @@ function cargarTarjeta(libro) {
     libro.disponible = !libro.disponible;
     modificarLibro(libro);
     renderizarListLibros(libros);
-  });
+  }); 
 
   return tarjetaLibro;
 }
 
-function renderizarListLibros(listaLibros) {
+export function renderizarListLibros(listaLibros) {
   let contenedorLibros = document.getElementById("grid-libros");
 
   contenedorLibros.innerHTML = "";
@@ -53,7 +52,7 @@ function renderizarListLibros(listaLibros) {
   }
 }
 
-function agregarSubmit(id, callback) {
+export function agregarSubmit(id, callback) {
   const formulario = document.getElementById(id);
 
   formulario.addEventListener("submit", (e) => {
@@ -67,11 +66,9 @@ function agregarSubmit(id, callback) {
   });
 }
 
-function agregarASelector(idSelect, listaGeneros, placeholder) {
+export function agregarASelector(idSelect, listaGeneros, placeholder) {
   const selectGeneros = document.getElementById(idSelect);
-  selectGeneros.appendChild(
-    optionsSelector("", placeholder, true, true),
-  );
+  selectGeneros.appendChild(optionsSelector("", placeholder, true, true));
 
   listaGeneros.forEach((e) => {
     selectGeneros.appendChild(optionsSelector(e, e, false, false));

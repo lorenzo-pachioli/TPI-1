@@ -1,8 +1,11 @@
-renderizarListLibros(libros);
+import { libros, lista_generos } from "./data.js";
+import * as render from "./render.js";
 
-agregarASelector("generos", lista_generos, "Seleccione un género");
+render.renderizarListLibros(libros);
 
-agregarSubmit("cargar-libro", (data) => {
+render.agregarASelector("generos", lista_generos, "Seleccione un género");
+
+render.agregarSubmit("cargar-libro", (data) => {
   const nuevo_libro = {
     id: ultimo_id,
     titulo: data.get("titulo"),
