@@ -1,9 +1,13 @@
-import { libros, lista_generos } from "./data.js";
+import { buscarLibros, libros, lista_generos } from "./data.js";
 import * as render from "./render.js";
+
+
 
 render.renderizarListLibros(libros);
 
 render.agregarASelector("generos", lista_generos, "Seleccione un género");
+
+render.listenerBuscador((e) => buscarLibros(e));
 
 render.agregarSubmit("cargar-libro", (data) => {
   const nuevo_libro = {

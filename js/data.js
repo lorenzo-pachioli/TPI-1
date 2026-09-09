@@ -104,4 +104,18 @@ export function modificarLibro(libro){
   })
 }
 
+export function buscarLibros(busqueda){
+  const busquedaTrimed = busqueda.trim();
+
+  if(busqueda === null || busquedaTrimed === "" || busqueda === undefined) {
+    return libros;
+  }
+
+  return libros.filter(libro => 
+        libro.titulo.toLowerCase().includes(busquedaTrimed) || 
+        libro.autor.toLowerCase().includes(busquedaTrimed)  || 
+        libro.genero.toLowerCase().includes(busquedaTrimed)
+    );
+}
+
   

@@ -37,7 +37,7 @@ export function cargarTarjeta(libro) {
     libro.disponible = !libro.disponible;
     modificarLibro(libro);
     renderizarListLibros(libros);
-  }); 
+  });
 
   return tarjetaLibro;
 }
@@ -46,6 +46,8 @@ export function renderizarListLibros(listaLibros) {
   let contenedorLibros = document.getElementById("grid-libros");
 
   contenedorLibros.innerHTML = "";
+  
+  if(listaLibros.length === 0 ) return;
 
   for (let index = 0; index < listaLibros.length; index++) {
     contenedorLibros.appendChild(cargarTarjeta(listaLibros[index]));
@@ -82,4 +84,17 @@ function optionsSelector(value, text, disable, selected) {
   opcionPorDefecto.disabled = disable;
   opcionPorDefecto.selected = selected;
   return opcionPorDefecto;
+}
+
+export function listenerBuscador(filtroBusqueda) {
+  const buscador = document.getElementById("buscador");
+
+  buscador.addEventListener("input", (e) => {
+    const valorBusqueda = e.target.value.toLowerCase();
+
+    const librosFiltrados = filtroBusqueda(valorBusqueda);
+
+    renderizarListLibros(librosFiltrados);
+  });
+
 }
