@@ -1,7 +1,9 @@
 "use strict";
-import { libros, modificarLibro } from "./data.js";
 
-export function cargarTarjeta(libro) {
+export function cargarTarjeta(index, biblioteca) {
+
+  let libro = biblioteca.libros[index];
+
   let tarjetaLibro = document.createElement("div");
   tarjetaLibro.classList.add("tarjeta-libro");
 
@@ -28,29 +30,29 @@ export function cargarTarjeta(libro) {
   const botonFav = tarjetaLibro.querySelector(".favorito-icono");
   botonFav.addEventListener("click", () => {
     libro.favorito = !libro.favorito;
-    modificarLibro(libro);
-    renderizarListLibros(libros);
+    biblioteca.modificarLibro(libro);
+    renderizarListLibros(biblioteca);
   });
 
   const botonDis = tarjetaLibro.querySelector(".disponible-icono");
   botonDis.addEventListener("click", () => {
     libro.disponible = !libro.disponible;
-    modificarLibro(libro);
-    renderizarListLibros(libros);
+    biblioteca.modificarLibro(libro);
+    renderizarListLibros(biblioteca);
   });
 
   return tarjetaLibro;
 }
 
-export function renderizarListLibros(listaLibros) {
+export function renderizarListLibros(biblioteca) {
   let contenedorLibros = document.getElementById("grid-libros");
-
+  
   contenedorLibros.innerHTML = "";
   
-  if(listaLibros.length === 0 ) return;
+  if(!biblioteca || !biblioteca.libros || biblioteca.libros.length === 0 ) return;
 
-  for (let index = 0; index < listaLibros.length; index++) {
-    contenedorLibros.appendChild(cargarTarjeta(listaLibros[index]));
+  for (let index = 0; index < biblioteca.libros.length; index++) {
+    contenedorLibros.appendChild(cargarTarjeta(index, biblioteca));
   }
 }
 
@@ -60,7 +62,7 @@ export function agregarSubmit(id, callback) {
   formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const data = new FormData(formulario);
+    const data = Object.fromEntries(new FormData(formulario));
 
     callback(data);
 
@@ -91,10 +93,7 @@ export function listenerBuscador(filtroBusqueda) {
 
   buscador.addEventListener("input", (e) => {
     const valorBusqueda = e.target.value.toLowerCase();
-
-    const librosFiltrados = filtroBusqueda(valorBusqueda);
-
-    renderizarListLibros(librosFiltrados);
+    filtroBusqueda(valorBusqueda);
   });
 
 }
